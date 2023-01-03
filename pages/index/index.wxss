@@ -1,0 +1,237 @@
+
+.search {
+    display: flex;
+    align-items: center;
+    height: 88rpx;
+    width: 100%;
+    padding: 0 30rpx;
+    background: #FFFFFF;
+}
+
+.search .input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 690rpx;
+    height: 56rpx;
+    background: #EDEDED;
+    border-radius: 8rpx;
+}
+
+.search .icon {
+    width: 28rpx;
+    height: 28rpx;
+    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png) center no-repeat;
+    background-size: 100%;
+}
+
+.search .txt {
+    height: 42rpx;
+    line-height: 42rpx;
+    color: #666;
+    font-size: 30rpx;
+    padding-left: 10rpx;
+}
+
+.banner {
+    width: 750rpx;
+    height: 417rpx;
+}
+
+.banner image {
+    width: 100%;
+    height: 417rpx;
+}
+
+.m-menu {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 181rpx;
+    width: 750rpx;
+    background-color: #FFFFFF;
+}
+
+.section {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    background: #F4F4F4;
+    margin-top: 20rpx;
+}
+
+.section .top {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    margin: 40rpx 0;
+}
+
+.section .top .txt {
+    padding-right: 30rpx;
+    background: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201812%2F12%2F20181212220737_yuutv.thumb.1000_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1674711234&t=dd76a5153eaa417ba3bec920ccbaba70") right 4rpx no-repeat;
+    background-size: 16.656rpx 27rpx;
+    display: inline-block;
+    height: 36rpx;
+    font-size: 33rpx;
+    line-height: 36rpx;
+}
+
+.new-section .main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    padding: 0 20rpx 30rpx;
+}
+
+.new-section .main .item {
+    float: left;
+    width: 48%;
+    border-radius: 15rpx;
+    background: #FFFFFF;
+    margin-bottom: 30rpx;
+    overflow: hidden;
+}
+
+.new-section .main .img {
+    width: 100%;
+    height: 360rpx;
+}
+
+.new-section .main .bottom {
+    padding: 20rpx 15rpx;
+}
+
+.new-section .main .bottom .name {
+    font-size: 30rpx;
+    margin-bottom: 18rpx;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.new-section .main .bottom .price {
+    color: #FF5500;
+}
+
+.a-popular {
+  width: 750rpx;
+  height: auto;
+  overflow: hidden;
+}
+
+.a-popular .b .item {
+  border-top: 1px solid #d9d9d9;
+  margin: 0 20rpx;
+  height: 264rpx;
+  width: 710rpx;
+}
+
+.a-popular .b .img {
+  margin-top: 12rpx;
+  margin-right: 12rpx;
+  float: left;
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.a-popular .b .right {
+  float: left;
+  height: 264rpx;
+  width: 456rpx;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.a-popular .b .text {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  height: 264rpx;
+  width: 456rpx;
+}
+
+.a-popular .b .name {
+  width: 456rpx;
+  display: block;
+  color: #333;
+  line-height: 50rpx;
+  font-size: 30rpx;
+}
+
+.a-popular .b .desc {
+  width: 456rpx;
+  display: block;
+  color: #999;
+  line-height: 50rpx;
+  font-size: 25rpx;
+}
+
+.a-popular .b .price {
+  width: 456rpx;
+  display: block;
+  color: #b4282d;
+  line-height: 50rpx;
+  font-size: 33rpx;
+}
+
+.a-topic .b {
+  height: 533rpx;
+  width: 750rpx;
+  padding: 0 0 48rpx 0;
+}
+
+.a-topic .b .list {
+  height: 533rpx;
+  width: 750rpx;
+  white-space: nowrap;
+}
+
+.a-topic .b .item {
+  display: inline-block;
+  height: 533rpx;
+  width: 680.5rpx;
+  margin-left: 30rpx;
+  overflow: hidden;
+}
+
+.a-topic .b .item:last-child {
+  margin-right: 30rpx;
+}
+
+.a-topic .b .img {
+  height: 387.5rpx;
+  width: 680.5rpx;
+  margin-bottom: 30rpx;
+}
+
+.a-topic .b .np {
+  height: 35rpx;
+  margin-bottom: 13.5rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+
+.a-topic .b .np .price {
+  margin-left: 20.8rpx;
+  color: #b4282d;
+}
+
+.a-topic .b .desc {
+  display: block;
+  height: 30rpx;
+  color: #999;
+  font-size: 24rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}

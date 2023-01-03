@@ -1,0 +1,80 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="search">
+        <navigator url="/pages/search/search" class="input">
+            <image class="icon"></image>
+            <text class="txt">商品搜索, 共{{goodsCount}}款好物</text>
+        </navigator>
+    </view>
+    <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+        <swiper-item wx:for="{{banner}}" wx:key="id">
+            <navigator url="{{item.link}}">
+                <image src="{{item.image}}" background-size="cover"></image>
+            </navigator>
+        </swiper-item>
+    </swiper>
+    <view class="section new-section" wx:if="{{newGoods.length}}">
+        <view class="top">
+            <navigator url="../newGoods/newGoods">
+                <text class="txt">新品首发</text>
+            </navigator>
+        </view>
+        <view class="main">
+            <view class="item" wx:for="{{newGoods}}" wx:key="id">
+                <navigator url="../goods/goods?id={{item.id}}">
+                    <image class="img" src="{{item.image}}" background-size="cover"></image>
+                    <view class="bottom">
+                        <view class="name">{{item.name}}</view>
+                        <view class="price">￥{{item.price}}</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="section a-popular" wx:if="{{hotGoods.length}}">
+        <view class="top">
+            <view>
+                <navigator url="../hotGoods/hotGoods">
+                    <text class="txt">人气推荐</text>
+                </navigator>
+            </view>
+        </view>
+        <view class="b">
+            <view class="item" wx:for="{{hotGoods}}"  wx:key="id">
+                <navigator url="/pages/goods/goods?id={{item.id}}">
+                <image class="img" src="{{item.image}}" background-size="cover"></image>
+                <view class="right">
+                    <view class="text">
+                        <text class="name">{{item.name}}</text>
+                        <text class="desc">{{item.desc}}</text>
+                        <text class="price">￥{{item.price}}</text>
+                    </view>
+                </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="section a-topic" wx:if="topics.length > 0">
+        <view class="top">
+        <view>
+            <navigator url="../topic/topic" open-type="switchTab">
+            <text class="txt">专题精选</text>
+            </navigator>
+        </view>
+        </view>
+        <view class="b">
+        <scroll-view scroll-x="true" class="list">
+            <view class="item" wx:for="{{topics}}" wx:key="id">
+            <navigator url="../topicDetail/topicDetail?id={{item.id}}">
+                <image class="img" src="{{item.image}}" background-size="cover"></image>
+                <view class="np">
+                <text class="name">{{item.title}}</text>
+                <text class="price">￥{{item.price}}元起</text>
+                </view>
+                <text class="desc">{{item.subtitle}}</text>
+            </navigator>
+            </view>
+        </scroll-view>
+        </view>
+    </view>
+</view>
