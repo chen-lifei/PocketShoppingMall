@@ -1,4 +1,27 @@
-<view class="container">
+<view class="login-wrapper" wx:if="{{showLogin}}">
+    <view class="name">口袋商城</view>
+    <view class="btn" bindtap="onPhoneLogin">
+        <p-icon name="phone"></p-icon>
+        手机号快捷登录</view>
+    <view class="btn mail" bindtap="onEmailLogin">
+        <p-icon name="email"></p-icon>
+        邮箱账号登录</view>
+    <view class="bottom-wrapper">
+        <view class="inner-wrapper">
+            <p-icon name="wechat"></p-icon>
+            微信
+        </view>
+        <view class="inner-wrapper">
+            <p-icon name="qq"></p-icon>
+            QQ
+        </view>
+        <view class="inner-wrapper">
+            <p-icon name="weibo"></p-icon>
+            微博
+        </view>
+    </view>
+</view>
+<view class="container" wx:else>
     <view class="profile-info">
         <image bindtap="onUserInfoClick" class="avatar" src="{{userInfo.avatar}}"></image>
         <view class="info">
@@ -80,7 +103,7 @@
     <!-- <view class="logout" bindtap="exitLogin">退出登录</view> -->
 </view>
 
-<view class='dialog-login' wx:if="{{showLoginDialog}}" bindtap='onCloseLoginDialog'>
+<!-- <view class='dialog-login' wx:if="{{showLogin}}" data-show="0" bindtap='toggleLogin'>
     <view class='dialog-body' catchtap='onDialogBody'>
         <view class='title'>请选择登录方式</view>
         <view class='content'>
@@ -88,4 +111,4 @@
             <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onWechatLogin">手机号登录</button>
         </view>
     </view>
-</view>
+</view> -->

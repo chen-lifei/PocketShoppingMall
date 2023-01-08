@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import "./static/iconfont/iconfont.wxss";
+
 .container {
     box-sizing: border-box;
     background-color: #f4f4f4;

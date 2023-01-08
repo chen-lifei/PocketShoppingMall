@@ -6,44 +6,42 @@ const app = getApp();
 Page({
     data: {
         userInfo: {},
-        showLoginDialog: false
+        showLogin: true
     },
-    onLoad: function (options) {
-        // 页面初始化 options为页面跳转所带来的参数
-    },
-    onReady: function () {
-    },
-    onShow: function () {
+    onShow() {
         this.setData({
             userInfo: app.globalData.userInfo,
         });
+        wx.hideTabBar();
     },
-    onHide: function () {
-        // 页面隐藏
-    },
-    onUnload: function () {
-        // 页面关闭
-    },
-    onUserInfoClick: function () {
+    onUserInfoClick() {
         if (wx.getStorageSync('token')) {
-
         } else {
-            this.showLoginDialog();
+            this.toggleLogin(true);
         }
     },
-    showLoginDialog() {
-        this.setData({
-            showLoginDialog: true
-        })
-    },
-    onCloseLoginDialog() {
-        this.setData({
-            showLoginDialog: false
-        })
+    toggleLogin(data) {
+        if (typeof data == "boolean") {
+            this.setData({
+                showLogin: !!data
+            });
+        } else {
+            if (data.target) {
+                let show = Number(data.target.dataset.show);
+                this.setData({
+                    showLogin: !!show
+                });
+            }
+        }
     },
     onDialogBody() {
         // 阻止冒泡
     },
+    // 手机号登录
+    onPhoneLogin() {},
+    onEmailLogin() {
+    },
+    // 微信登录
     onWechatLogin(e) {
         if (e.detail.errMsg !== 'getUserInfo:ok') {
             if (e.detail.errMsg === 'getUserInfo:fail auth deny') {
@@ -70,7 +68,7 @@ Page({
             // 设置用户信息
             this.setData({
                 userInfo: res.data.userInfo,
-                showLoginDialog: false
+                showLogin: false
             });
             app.globalData.userInfo = res.data.userInfo;
             app.globalData.token = res.data.token;
@@ -80,21 +78,20 @@ Page({
             console.log(err)
         })
     },
-    onOrderInfoClick: function (event) {
+    onOrderInfoClick(event) {
         wx.navigateTo({
             url: '/pages/ucenter/order/order',
-        })
+        });
     },
-    onSectionItemClick: function (event) {
-
+    onSectionItemClick(event) {
     },
-    // TODO 移到个人信息页面
-    exitLogin: function () {
+    // 退出登录
+    exitLogin() {
         wx.showModal({
             title: '',
             confirmColor: '#b4282d',
             content: '退出登录？',
-            success: function (res) {
+            success(res) {
                 if (res.confirm) {
                     wx.removeStorageSync('token');
                     wx.removeStorageSync('userInfo');
@@ -104,6 +101,5 @@ Page({
                 }
             }
         })
-
-    }
+    },
 });
