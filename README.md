@@ -1,7 +1,7 @@
 ### Pocket Shopping Mall - 口袋商城（微信小程序端）
 
-+ 界面高仿网易严选商城(主要是2016年wap版)
-+ 服务端api基于Ｎode.js+ThinkJS+MySQL
++ 界面类似网易严选商城
++ 服务端api基于Ｎode.js+MySQL
 
 ### 功能列表
 + 首页

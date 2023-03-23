@@ -5,8 +5,18 @@ const app = getApp();
 
 Page({
     data: {
+        loginType: "",
+        errorText: "",
+        showLogin: false,
+        codeLogin: true,
+        checkPolicy: true,
         userInfo: {},
-        showLogin: true
+        loginData: {
+            phone: "",
+            email: "",
+            password: "",
+            code: ""
+        },
     },
     onShow() {
         this.setData({
@@ -34,12 +44,49 @@ Page({
             }
         }
     },
-    onDialogBody() {
-        // 阻止冒泡
+    enterLogin(data) {
+        let loginType = data.target && data.target.dataset.type;
+        this.setData({
+            loginType
+        });
+    },
+    toggleCodeLogin() {
+        this.setData({
+            codeLogin: !this.data.codeLogin
+        });
+    },
+    // 清空手机号
+    handleClearNumber() {
+    },
+    onLogin() {
+        let loginData = this.data.loginData;
+        if (this.data.loginType === "phone") {
+            if (!loginData.phone) return this.setData({ errorText: "请输入手机号" });
+            if (!loginData.phone) return this.setData({ errorText: "手机号码格式错误，请更换后重试" });
+            if (this.data.codeLogin) {
+                if(!loginData.code) return this.setData({ errorText: "请输入短信验证码" });
+                if(loginData.code.length !== 6) return this.setData({ errorText: "短信验证码格式错误" });
+            }
+            if (!this.data.codeLogin && !loginData.password) return this.setData({ errorText: "请输入密码" });
+        } else if (this.data.loginType === "email") {
+            if (!loginData.email) return this.setData({ errorText: "请输入邮箱" });
+            if (!loginData.email) return this.setData({ errorText: "邮箱格式错误，请更换后重试" });
+            if (!loginData.password) return this.setData({ errorText: "请输入密码" });
+        }
+        if (!this.data.checkPolicy) return this.setData({ errorText: "您需要同意相关条款才能使用" });
+        this.setData({ errorText: "" });
     },
     // 手机号登录
     onPhoneLogin() {},
     onEmailLogin() {
+    },
+    onInput(e) {
+        let loginData = this.data.loginData;
+        let type = e.target.dataset.type;
+        loginData[type] = e.detail.value;
+        this.setData({
+            loginData
+        });
     },
     // 微信登录
     onWechatLogin(e) {

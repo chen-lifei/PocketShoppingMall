@@ -3,7 +3,7 @@ App({
         try {
             this.globalData.userInfo = !!wx.getStorageSync('userInfo') ? JSON.parse(wx.getStorageSync('userInfo')) : {
                 nickname: "游客99887",
-                avatar: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftupian.qqw21.com%2Farticle%2FUploadPic%2F2022-4%2F202242710561814794.jpg&refer=http%3A%2F%2Ftupian.qqw21.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1674887937&t=6b87bca69fe836f8086a4f7a1d22f867'
+                avatar: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202104%2F22%2F20210422220420_0a16e.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1681900348&t=66d61da6e6f96ee36ea24f5d20da0ab8'
             };
             this.globalData.token = wx.getStorageSync('token');
         } catch (e) {

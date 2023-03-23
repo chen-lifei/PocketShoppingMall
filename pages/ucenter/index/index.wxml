@@ -1,23 +1,79 @@
 <view class="login-wrapper" wx:if="{{showLogin}}">
-    <view class="name">口袋商城</view>
-    <view class="btn" bindtap="onPhoneLogin">
-        <p-icon name="phone"></p-icon>
-        手机号快捷登录</view>
-    <view class="btn mail" bindtap="onEmailLogin">
-        <p-icon name="email"></p-icon>
-        邮箱账号登录</view>
-    <view class="bottom-wrapper">
-        <view class="inner-wrapper">
-            <p-icon name="wechat"></p-icon>
-            微信
+    <!-- 手机登录 -->
+    <view class="phone-login" wx:if="{{loginType === 'phone'}}">
+        <view class="name">口袋商城</view>
+        <view class="input-wrapper">
+            <input placeholder="请输入手机号" value="{{loginData.phone}}" data-type="phone" bindinput="onInput"></input>
+            <p-icon wx:if="{{loginData.phone}}" name="close" bindtap="handleClearNumber"></p-icon>
         </view>
-        <view class="inner-wrapper">
-            <p-icon name="qq"></p-icon>
-            QQ
+        <view class="input-wrapper" wx:if="{{codeLogin}}">
+            <input placeholder="请输入短信验证码" value="{{loginData.code}}" data-type="code" bindinput="onInput"></input>
+            <view class="code">获取验证码</view>
         </view>
-        <view class="inner-wrapper">
-            <p-icon name="weibo"></p-icon>
-            微博
+        <view class="input-wrapper" wx:else>
+            <input placeholder="请输入密码" password value="{{loginData.password}}" data-type="password" bindinput="onInput"></input>
+        </view>
+        <view class="error" wx:if="{{errorText}}">
+            {{errorText}}
+        </view>
+        <view class="change">
+            <view class="left">{{codeLogin ? "注册账号" : "忘记密码"}}</view>
+            <view bindtap="toggleCodeLogin">{{codeLogin ? "密码验证登录" : "短信快捷登录"}}</view>
+        </view>
+        <view class="login-btn" bindtap="onLogin">登录</view>
+        <view class="policy">
+            <checkbox checked="{{checkPolicy}}"/>
+            <view class="text">
+                同意<a>《服务条款》</a>和<a>《隐私政策》</a>和<a>《口袋商城服务协议》</a>
+            </view>
+        </view>
+        <view class="other" data-type="default" bindtap="enterLogin">其他登录方式></view>
+    </view>
+    <!-- 邮箱登录 -->
+    <view class="email-login" wx:elif="{{loginType === 'email'}}">
+        <view class="name">口袋商城</view>
+        <view class="input-wrapper">
+            <input placeholder="请输入邮箱" value="{{loginData.email}}" data-type="email" bindinput="onInput"></input>
+            <p-icon wx:if="{{loginData.email}}" name="close" bindtap="handleClearNumber"></p-icon>
+        </view>
+        <view class="code-wrapper">
+            <input placeholder="请输入密码" password value="{{loginData.password}}" data-type="password" bindinput="onInput"></input>
+        </view>
+        <view class="change">
+            <view class="left">注册账号</view>
+            <view>忘记密码</view>
+        </view>
+        <view class="login-btn" bindtap="onLogin">登录</view>
+        <view class="policy">
+            <checkbox checked="{{checkPolicy}}"/>
+            <view class="text">
+                同意<a>《服务条款》</a>和<a>《隐私政策》</a>和<a>《口袋商城服务协议》</a>
+            </view>
+        </view>
+        <view class="other" data-type="default" bindtap="enterLogin">其他登录方式></view>
+    </view>
+    <!-- 选择登录方式 -->
+    <view wx:else>
+        <view class="name">口袋商城</view>
+        <view class="btn" data-type="phone" bindtap="enterLogin">
+            <p-icon name="phone"></p-icon>
+            手机号快捷登录</view>
+        <view class="btn mail" data-type="email" bindtap="enterLogin">
+            <p-icon name="email"></p-icon>
+            邮箱账号登录</view>
+        <view class="login-bottom">
+            <view class="inner-wrapper">
+                <p-icon name="wechat"></p-icon>
+                微信
+            </view>
+            <view class="inner-wrapper">
+                <p-icon name="qq"></p-icon>
+                QQ
+            </view>
+            <view class="inner-wrapper">
+                <p-icon name="weibo"></p-icon>
+                微博
+            </view>
         </view>
     </view>
 </view>
@@ -102,13 +158,3 @@
 
     <!-- <view class="logout" bindtap="exitLogin">退出登录</view> -->
 </view>
-
-<!-- <view class='dialog-login' wx:if="{{showLogin}}" data-show="0" bindtap='toggleLogin'>
-    <view class='dialog-body' catchtap='onDialogBody'>
-        <view class='title'>请选择登录方式</view>
-        <view class='content'>
-            <button type="primary" open-type="getUserInfo" bindgetuserinfo="onWechatLogin">微信登录</button>
-            <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onWechatLogin">手机号登录</button>
-        </view>
-    </view>
-</view> -->
